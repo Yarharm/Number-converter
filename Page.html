@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>Welcome to Binary converter</h1>
+
+
+	<p>Enter decimal value here:</p> <input id = 'input' type = "text"><br>
+	<p>Result:</p> <input id = 'output' type = "text">
+
+<button id = 'button' type = "button" onclick = convert();>Convert</button>
+
+<script>
+function convert(){
+	var value = parseFloat(document.getElementById('input').value, 10);
+	var result = "";
+	
+	document.getElementById('output').value = binToDec(value);
+}
+function binToDec(num){
+	var result;
+	if(num == 0){
+		result = 0;
+		}
+	else{
+	result = num % 2 + 10 * binToDec(Math.floor(num / 2));
+	}
+	return result;
+}
+</script>
+</body>
+</html>
