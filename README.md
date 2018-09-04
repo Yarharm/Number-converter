@@ -1,3 +1,4 @@
 # Number-converter
 
-Conversion from decimal values to binary.
+Allows conversion between multiple number systems, such as Decimal, Hexadecimal, Octal and Binary. 
+
