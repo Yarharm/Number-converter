@@ -3,21 +3,22 @@
 <head>
 	<meta charset = "utf-8">
 	<title>Number-convert</title>
+	<link href="style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 
 <h1>Welcome to Binary converter</h1>
 
 
-	<p id = 'mainPart'>
+	<p id = 'box'>
 	From
 	<button id = 'fromBin' type = "button" onclick = fromBinClicked();>Binary</button>
 	<button id = 'fromDec' type = "button" onclick = fromDecClicked();>Decimal</button><br/>
 	
 	To
 	<button id = 'toBin' type = "button" onclick = toBinClicked();>Binary</button>
-	<button id = 'toDec' type = "button" onclick = toDecClicked();>Decimal</button><br/>
-	
+	<button id = 'toDec' type = "button" onclick = toDecClicked();>Decimal</button>
+	<button id = 'toOct' type = "button" onclick = toOctClicked();>Octal</button><br/>
 	Input value:<input id = 'input' type = "text"><br/>
 	Result: <input id = 'output' type = "text">
 	</p>
@@ -27,43 +28,60 @@
 <script>
 <!-- Varialbes for the types of the data-->
 var fromBin = false, fromDec = false;
-var toBin = false, toDec = false;
+var toBin = false, toDec = false, toOct = false;
 
 <!-- If user wants to convert from Binary -->
-function fromBinClicked(){
-	fromBin = true; fromDec = false;
-}
+function fromBinClicked(){fromBin = true; fromDec = false;}
+
 <!-- If user wants to convert from Decimal -->
-function fromDecClicked(){
-	fromDec = true; fromBin = false;
-}
+function fromDecClicked(){fromDec = true; fromBin = false;}
+
 <!-- If user wants to convert to Binary -->
-function toBinClicked(){
-	toBin = true; toDec = false;
-}
+function toBinClicked(){toBin = true; toDec = false; toOct = false;}
+
 <!-- If user wants to convert to Decimal -->
-function toDecClicked(){
-	toDec = true; toBin = false;
-}
+function toDecClicked(){toDec = true; toBin = false; toOct = false;}
+
+<!-- If user wants to convert to Octal -->
+function toOctClicked(){toOct = true; toDec = false; toBin = false;}
 
 <!-- Convert function for the main button -->
 function convert(){
-	var input;
+	var input = parseFloat(document.getElementById('input').value, 10);
 	<!-- Execution from Binary to Decimal -->
 	if(fromBin == true && toDec == true){
-		input = parseFloat(document.getElementById('input').value, 10);
 		document.getElementById('output').value = binToDec(input);
 	}
 	<!-- Executiom from Decimal to Binary -->
 	else if(fromDec == true && toBin == true){
-		input = parseFloat(document.getElementById('input').value, 10);
 		document.getElementById('output').value = decToBin(input);
+	}
+	<!-- Executiom from Decimal to Octal -->
+	else if(fromDec == true && toOct == true){
+		document.getElementById('output').value = decToOct(input);
+	}
+	<!-- Executiom from Binary to Octal -->
+	else if(fromBin == true && toOct == true){ 
+		document.getElementById('output').value = decToOct(binToDec(input));
 	}
 	<!-- Execution for other cases-->
 	else{
-		input = parseFloat(document.getElementById('input').value, 10);
 		document.getElementById('output').value = input;
 	}
+}
+<!-- Function that converts from the decimal to octal -->
+function decToOct(num){
+	var result;
+	if(num == 0){
+		result = 0;
+	}
+	else{
+	result = num % 8 + 10 * decToOct(Math.floor(num / 8));
+	}
+	if(result == -1)
+		return -1;
+	else 
+		return result;
 }
 <!-- Function that converts from the binary to decimal -->
 function binToDec(num){
@@ -73,6 +91,7 @@ function binToDec(num){
 	while(num > 0){
 	<!-- If num is not a binary value -->
 		if(num % 10 > 1){ result = -1; break;}
+		
 		result += num % 2 * Math.pow(2,i);
 		i++;
 		num = Math.floor(num / 10);
