@@ -1,33 +1,49 @@
 <!DOCTYPE html>
 <html lang = "en">
 <head>
-	<meta charset = "utf-8">
 	<title>Number-convert</title>
-	<link href="style.css" rel="stylesheet" type="text/css">
+	<meta charset = "utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-
-<h1>Welcome to Binary converter</h1>
-
-
-	<p id = 'box'>
-	From
-	<button id = 'fromBin' type = "button" onclick = fromBinClicked();>Binary</button>
-	<button id = 'fromDec' type = "button" onclick = fromDecClicked();>Decimal</button>
-	<button id = 'fromOctal' type = "button" onclick = fromOctClicked();>Octal</button>
-	<button id = 'fromHex' type = "button" onclick = fromHexClicked();>Hex</button><br/>
-	
-	To
-	<button id = 'toBin' type = "button" onclick = toBinClicked();>Binary</button>
-	<button id = 'toDec' type = "button" onclick = toDecClicked();>Decimal</button>
-	<button id = 'toOct' type = "button" onclick = toOctClicked();>Octal</button>
-	<button id = 'toHex' type = "button" onclick = toHexClicked();>Hex</button><br/>
-	Input value:<input id = 'input' type = "text"><br/>
-	Result: <input id = 'output' type = "text">
-	</p>
-
-<button id = 'button' type = "button" onclick = convert();>Convert</button>
-
+	<div class = "jumbotron text-left">
+		<h1>Welcome to Number Converter</h1>
+	</div>
+	<div class = "container-fluid">
+		<div class = "row">
+			<div class = "col-sm-1"></div>
+			<div class = "col-sm-1">From</div>
+			<button id = 'fromBin' type = "button" class = "btn btn-default btn-lg" onclick = fromBinClicked();>Binary</button>
+			<button id = 'fromDec' type = "button" class = "btn btn-default btn-lg" onclick = fromDecClicked();>Decimal</button>
+			<button id = 'fromOctal' type = "button" class = "btn btn-default btn-lg" onclick = fromOctClicked();>Octal</button>
+			<button id = 'fromHex' type = "button" class = "btn btn-default btn-lg" onclick = fromHexClicked();>Hex</button>
+		</div>
+		<div class = "row">
+			<div class = "col-sm-1"></div>
+			<div class = "col-sm-1">To</div>
+			<button id = 'toBin' type = "button" class = "btn btn-default btn-lg" onclick = toBinClicked();>Binary</button>
+			<button id = 'toDec' type = "button" class = "btn btn-default btn-lg" onclick = toDecClicked();>Decimal</button>
+			<button id = 'toOct' type = "button" class = "btn btn-default btn-lg" onclick = toOctClicked();>Octal</button>
+			<button id = 'toHex' type = "button" class = "btn btn-default btn-lg" onclick = toHexClicked();>Hex</button>
+		</div>
+		<div class = "row">
+			<div class = "col-sm-1"></div>
+			<div class = "col-sm-1">Input value:</div>
+			<input id = 'input' type = "text" class = "col-sm-3">><br/>
+		</div>
+		<div class = "row">
+			<div class = "col-sm-1"></div>
+			<div class = "col-sm-1">Result:</div>
+			<input id = 'output' type = "text" class = "col-sm-3">
+		</div>
+		<div class = "row">
+			<div class = "col-sm-2"></div>
+			<button id = 'button' type = "button" class = "btn btn-primary btn-lg"onclick = convert();>Convert</button>
+		</div>
+	</div>
 <script>
 <!-- Varialbes for the types of the data-->
 var fromBin = false, fromDec = false, fromOct = false, fromHex = false;
