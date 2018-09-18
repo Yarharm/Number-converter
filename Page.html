@@ -5,17 +5,19 @@
 	<meta charset = "utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
 <body>
-	<div class = "jumbotron text-left">
-		<h1>Welcome to Number Converter</h1>
+	<div class = "jumbotron">
+		<!-- Add picture to jumbotron -->
 	</div>
 	<div class = "container-fluid">
+		<h1>Welcome to Number Converter</h1>
 		<div class = "row">
 			<div class = "col-sm-1"></div>
-			<div class = "col-sm-1">From</div>
+			<div id="from" class = "col-sm-1">From</div>
 			<button id = 'fromBin' type = "button" class = "btn btn-default btn-lg" onclick = fromBinClicked();>Binary</button>
 			<button id = 'fromDec' type = "button" class = "btn btn-default btn-lg" onclick = fromDecClicked();>Decimal</button>
 			<button id = 'fromOctal' type = "button" class = "btn btn-default btn-lg" onclick = fromOctClicked();>Octal</button>
@@ -23,25 +25,25 @@
 		</div>
 		<div class = "row">
 			<div class = "col-sm-1"></div>
-			<div class = "col-sm-1">To</div>
+			<div id = "to" class = "col-sm-1">To</div>
 			<button id = 'toBin' type = "button" class = "btn btn-default btn-lg" onclick = toBinClicked();>Binary</button>
 			<button id = 'toDec' type = "button" class = "btn btn-default btn-lg" onclick = toDecClicked();>Decimal</button>
 			<button id = 'toOct' type = "button" class = "btn btn-default btn-lg" onclick = toOctClicked();>Octal</button>
 			<button id = 'toHex' type = "button" class = "btn btn-default btn-lg" onclick = toHexClicked();>Hex</button>
 		</div>
 		<div class = "row">
-			<div class = "col-sm-1"></div>
-			<div class = "col-sm-1">Input value:</div>
-			<input id = 'input' type = "text" class = "col-sm-3">><br/>
+			<div id="inputValue" class = "col-sm-2">Input value:</div>
+			<input id = 'input' type = "text" class = "col-sm-3"><br/>
 		</div>
 		<div class = "row">
 			<div class = "col-sm-1"></div>
-			<div class = "col-sm-1">Result:</div>
+			<div id="result" class = "col-sm-1">Result:</div>
 			<input id = 'output' type = "text" class = "col-sm-3">
 		</div>
 		<div class = "row">
 			<div class = "col-sm-2"></div>
 			<button id = 'button' type = "button" class = "btn btn-primary btn-lg"onclick = convert();>Convert</button>
+			<button id = 'Test' type = "button" class = "btn btn-primary btn-lg"onclick = testFunction();>Test</button>
 		</div>
 	</div>
 <script>
@@ -50,7 +52,7 @@ var fromBin = false, fromDec = false, fromOct = false, fromHex = false;
 var toBin = false, toDec = false, toOct = false, toHex = false;
 
 <!-- If user wants to convert from Binary -->
-function fromBinClicked(){fromBin = true, fromDec = false, fromOct = false, fromHex = false;}
+function fromBinClicked(btn){fromBin = true, fromDec = false, fromOct = false, fromHex = false;}
 
 <!-- If user wants to convert from Decimal -->
 function fromDecClicked(){fromDec = true, fromBin = false, fromOct = false, fromHex = false;}
@@ -72,7 +74,11 @@ function toOctClicked(){toOct = true, toDec = false; toBin = false, toHex = fals
 <!-- If user wants to convert to Hex -->
 function toHexClicked(){toHex = true, toDec = false; toBin = false, toOct = false;}
 
-
+<!-- Change colors of the buttons (Only for from button -->
+function testFunction(){
+	document.getElementById('fromBin').style.backgroundColor = "red";
+	document.getElementById('fromBin').style.color = "purple";
+}
 <!-- Convert function for the main button -->
 function convert(){
 	var input = parseFloat(document.getElementById('input').value, 10);
