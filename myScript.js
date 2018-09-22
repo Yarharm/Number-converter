@@ -5,33 +5,27 @@ var fromBin = false, fromDec = false, fromOct = false, fromHex = false;
 var toBin = false, toDec = false, toOct = false, toHex = false;
 
 // If user wants to convert from Binary -->
-function fromBinClicked(btn){fromBin = true, fromDec = false, fromOct = false, fromHex = false;}
+function fromBinClicked(btn){colorFrom(1); fromBin = true, fromDec = false, fromOct = false, fromHex = false;}
 
 // If user wants to convert from Decimal -->
-function fromDecClicked(){fromDec = true, fromBin = false, fromOct = false, fromHex = false;}
+function fromDecClicked(){colorFrom(2); fromDec = true, fromBin = false, fromOct = false, fromHex = false;}
 
 // If user want to convert from Octal -->
-function fromOctClicked(){fromOct = true, fromBin =false, fromDec = false, fromHex = false;}
+function fromOctClicked(){colorFrom(3); fromOct = true, fromBin =false, fromDec = false, fromHex = false;}
 // if user want to convert from Hex -->
-function fromHexClicked(){fromHex = true, fromBin =false, fromDec = false, fromOct = false;}
+function fromHexClicked(){colorFrom(4); fromHex = true, fromBin =false, fromDec = false, fromOct = false;}
 
 // If user wants to convert to Binary -->
-function toBinClicked(){toBin = true, toDec = false; toOct = false, toHex = false;}
+function toBinClicked(){colorTo(1); toBin = true, toDec = false; toOct = false, toHex = false;}
 
 // If user wants to convert to Decimal -->
-function toDecClicked(){toDec = true, toBin = false; toOct = false, toHex = false;}
+function toDecClicked(){colorTo(2); toDec = true, toBin = false; toOct = false, toHex = false;}
 
 // If user wants to convert to Octal -->
-function toOctClicked(){toOct = true, toDec = false; toBin = false, toHex = false;}
+function toOctClicked(){colorTo(3); toOct = true, toDec = false; toBin = false, toHex = false;}
 
 // If user wants to convert to Hex -->
-function toHexClicked(){toHex = true, toDec = false; toBin = false, toOct = false;}
-
-// Change colors of the buttons (Only for from button -->
-function testFunction(){
-	document.getElementById('fromBin').style.backgroundColor = "red";
-	document.getElementById('fromBin').style.color = "purple";
-}
+function toHexClicked(){colorTo(4); toHex = true, toDec = false; toBin = false, toOct = false;}
 
 // Convert function for the main button -->
 function convert(){
@@ -193,4 +187,55 @@ function decToBin(num){
 	result = num % 2 + 10 * decToBin(Math.floor(num / 2));
 	}
 	return result;
+}
+
+// Ceep color of the buttons when clicked -->
+function colorFrom(num){
+	switch(num){
+		case 1:
+			document.getElementById('fromBin').style.backgroundColor = "#E6E4EB"; document.getElementById('fromBin').style.color = "#010101";
+			document.getElementById('fromDec').style.backgroundColor = "#515151"; document.getElementById('fromDec').style.color = "#FFFFFF";
+			document.getElementById('fromOct').style.backgroundColor = "#515151"; document.getElementById('fromOct').style.color = "#FFFFFF";
+			document.getElementById('fromHex').style.backgroundColor = "#515151"; document.getElementById('fromHex').style.color = "#FFFFFF"; break;
+		case 2:
+			document.getElementById('fromBin').style.backgroundColor = "#515151"; document.getElementById('fromBin').style.color = "#FFFFFF";
+			document.getElementById('fromDec').style.backgroundColor = "#E6E4EB"; document.getElementById('fromDec').style.color = "#010101";
+			document.getElementById('fromOct').style.backgroundColor = "#515151"; document.getElementById('fromOct').style.color = "#FFFFFF";
+			document.getElementById('fromHex').style.backgroundColor = "#515151"; document.getElementById('fromHex').style.color = "#FFFFFF"; break;
+		case 3:
+			document.getElementById('fromBin').style.backgroundColor = "#515151"; document.getElementById('fromBin').style.color = "#FFFFFF";
+			document.getElementById('fromDec').style.backgroundColor = "#515151"; document.getElementById('fromDec').style.color = "#FFFFFF";
+			document.getElementById('fromOct').style.backgroundColor = "#E6E4EB"; document.getElementById('fromOct').style.color = "#010101";
+			document.getElementById('fromHex').style.backgroundColor = "#515151"; document.getElementById('fromHex').style.color = "#FFFFFF"; break;
+		case 4:
+			document.getElementById('fromBin').style.backgroundColor = "#515151"; document.getElementById('fromBin').style.color = "#FFFFFF";
+			document.getElementById('fromDec').style.backgroundColor = "#515151"; document.getElementById('fromDec').style.color = "#FFFFFF";
+			document.getElementById('fromOct').style.backgroundColor = "#515151"; document.getElementById('fromOct').style.color = "#FFFFFF";
+			document.getElementById('fromHex').style.backgroundColor = "#E6E4EB"; document.getElementById('fromHex').style.color = "#010101"; break;
+	}
+	
+}
+function colorTo(num){
+	switch(num){
+		case 1:
+			document.getElementById('toBin').style.backgroundColor = "#E6E4EB"; document.getElementById('toBin').style.color = "#010101";
+			document.getElementById('toDec').style.backgroundColor = "#515151"; document.getElementById('toDec').style.color = "#FFFFFF";
+			document.getElementById('toOct').style.backgroundColor = "#515151"; document.getElementById('toOct').style.color = "#FFFFFF";
+			document.getElementById('toHex').style.backgroundColor = "#515151"; document.getElementById('fromHex').style.color = "#FFFFFF"; break;
+		case 2:
+			document.getElementById('toBin').style.backgroundColor = "#515151"; document.getElementById('toBin').style.color = "#FFFFFF";
+			document.getElementById('toDec').style.backgroundColor = "#E6E4EB"; document.getElementById('toDec').style.color = "#010101";
+			document.getElementById('toOct').style.backgroundColor = "#515151"; document.getElementById('toOct').style.color = "#FFFFFF";
+			document.getElementById('toHex').style.backgroundColor = "#515151"; document.getElementById('toHex').style.color = "#FFFFFF"; break;
+		case 3:
+			document.getElementById('toBin').style.backgroundColor = "#515151"; document.getElementById('toBin').style.color = "#FFFFFF";
+			document.getElementById('toDec').style.backgroundColor = "#515151"; document.getElementById('toDec').style.color = "#FFFFFF";
+			document.getElementById('toOct').style.backgroundColor = "#E6E4EB"; document.getElementById('toOct').style.color = "#010101";
+			document.getElementById('toHex').style.backgroundColor = "#515151"; document.getElementById('toHex').style.color = "#FFFFFF"; break;
+		case 4:
+			document.getElementById('toBin').style.backgroundColor = "#515151"; document.getElementById('toBin').style.color = "#FFFFFF";
+			document.getElementById('toDec').style.backgroundColor = "#515151"; document.getElementById('toDec').style.color = "#FFFFFF";
+			document.getElementById('toOct').style.backgroundColor = "#515151"; document.getElementById('toOct').style.color = "#FFFFFF";
+			document.getElementById('toHex').style.backgroundColor = "#E6E4EB"; document.getElementById('toHex').style.color = "#010101"; break;
+	}
 }
